@@ -8,6 +8,7 @@
 #   curl https://raw.githubusercontent.com/excalibur44/vps-shell-script/master/install-rinetd_bbr_powered.sh | bash
 
 export RINET_URL="https://github.com/linhua55/lkl_study/releases/download/v1.2/rinetd_bbr_powered"
+#export RINET_URL="https://drive.google.com/uc?id=1GLX7yMNe0nbiUVhLW6qpNKISsmAH8vW9"
 
 if [ "$(id -u)" != "0" ]; then
     echo -e "\e[1;31mERROR: Please run as root\e[0m"
