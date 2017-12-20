@@ -5,7 +5,7 @@
 # Tested system: 
 #   Debian 8
 # Usage:
-#   curl https://raw.githubusercontent.com/linhua55/lkl_study/master/get-rinetd.sh | bash
+#   curl https://raw.githubusercontent.com/excalibur44/vps-shell-script/master/install-rinetd_bbr_powered.sh | bash
 
 export RINET_URL="https://github.com/linhua55/lkl_study/releases/download/v1.2/rinetd_bbr_powered"
 
