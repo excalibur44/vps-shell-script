@@ -65,3 +65,44 @@ systemctl start caddy.service
 
 cd ~ && rm -rf /tmp/caddy
 echo -e "\e[1;32mInstall caddy successful! \e[0m"
+
+# ==== start install v2ray ====
+echo -e "\e[1;36mStart install v2ray... \e[0m"
+apt install -y curl
+bash <(curl -L -s https://install.direct/go.sh)
+mv /etc/v2ray/config.json /etc/v2ray/config.json.example
+UUID=$(cat /proc/sys/kernel/random/uuid)
+cat > /etc/v2ray/config.json <<-EOF
+{
+  "log" : {
+    "loglevel": "warning"
+  },
+  "inbound": {
+    "port": 10226,
+    "listen":"127.0.0.1",
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "${UUID}",
+          "alterId": 76
+        }
+      ]
+    },
+    "streamSettings":{
+      "network":"ws",
+      "wsSettings": {
+        "path": "/ray"
+      }
+    }
+  },
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  }
+}
+EOF
+
+echo -e "\e[1;32mInstall v2ray(vmess + WebSocket + TLS) successful! \e[0m"
+echo -e "\e[1mThe config file of v2ray is in \e[1;36m/etc/v2ray/config.json\e[0m"
+echo -e "\e[1mThe UUID is \e[36m${UUID}\e[37m and the alterID is \e[36m76\e[0m"
