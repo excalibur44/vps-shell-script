@@ -42,6 +42,12 @@ cat <<EOF > /etc/rinetd-bbr.conf
 0.0.0.0 443 0.0.0.0 443
 0.0.0.0 80 0.0.0.0 80
 EOF
+echo -en "\e[1mInput port(s) you want to speed up(segmented with spaces, default has 80, 443): \e[0m" 
+read ports </dev/tty
+for port in $ports
+do
+  echo "0.0.0.0 $port 0.0.0.0 $port" >> tmp.conf
+done
 
 # 4. Generate /etc/systemd/system/rinetd-bbr.service
 echo -e "\e[36;01m4. Generate /etc/systemd/system/rinetd-bbr.service\e[0m"
@@ -67,7 +73,7 @@ systemctl start rinetd-bbr.service
 
 if [ "$(systemctl status rinetd-bbr.service | sed -n "3p" | awk '{print $2}')"x = "active"x ]; then
   echo -e "\e[32;01mrinetd-bbr started.\e[0m"
-  echo "80,443 speed up completed."
+  echo "80 443 $ports speed up completed."
   echo "vi /etc/rinetd-bbr.conf as needed."
   echo "killall -9 rinetd-bbr for restart."
   #iptables -t raw -nL
