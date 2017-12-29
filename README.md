@@ -17,3 +17,5 @@
   此脚本用于安装 caddy 服务器，默认带有 git 和 hugo 插件，并且会安装 systemctl 服务。暂时加上了 v2ray 的转发，迟点会加上 git 和 hugo 实现自动化部署博客。
   
   用法：`curl https://raw.githubusercontent.com/excalibur44/vps-shell-script/master/install-caddy.sh | bash`
+  
+  2017-12-19 更新：会自动安装 v2ray ，与 caddy 的转发相对应
