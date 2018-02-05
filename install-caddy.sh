@@ -78,7 +78,7 @@ cat > /etc/v2ray/config.json <<-EOF
     "loglevel": "warning"
   },
   "inbound": {
-    "port": 10226,
+    "port": 40226,
     "listen":"127.0.0.1",
     "protocol": "vmess",
     "settings": {
