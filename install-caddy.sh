@@ -113,3 +113,12 @@ EOF
 echo -e "\e[1;32mInstall v2ray(vmess + WebSocket + TLS) successful! \e[0m"
 echo -e "\e[1mThe config file of v2ray is in \e[1;36m/etc/v2ray/config.json\e[0m"
 echo -e "\e[1mThe UUID is \e[36m${UUID}\e[37m and the alterID is \e[36m76\e[0m"
+
+# ==== start install v2ray ====
+echo -en "\e[1mDo you want to install ntpdate? (y/n)\e[0m\n"
+read -s -n1 key
+case $key in
+    y|Y) echo -e "\e[1mInstall ntpdate now.\e[0m" && apt install -y ntpdate;;
+    n|N) echo -e "\e[1mNot install ntpdate.\e[0m";;
+    *) echo -e "Bad input! If you want to install it, please use \e[1;36mapt install -y ntpdate\e[0m. Bye~";;
+esac
