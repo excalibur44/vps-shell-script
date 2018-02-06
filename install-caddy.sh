@@ -66,6 +66,13 @@ systemctl start caddy.service
 cd ~ && rm -rf /tmp/caddy
 echo -e "\e[1;32mInstall caddy successful! \e[0m"
 
+echo -en "\e[1mDo you want to install v2ray(vmess + WebSocket + TLS)? \nPress c to continue OR any key to exit...\e[0m\n"
+read -s -n1 key
+case $key in
+    c|C) echo -e "\e[1mcontinue...\e[0m";;
+    *) echo -e "\e[1mExit.\e[0m" && exit;;
+esac
+
 # ==== start install v2ray ====
 echo -e "\e[1;36mStart install v2ray... \e[0m"
 apt install -y curl
