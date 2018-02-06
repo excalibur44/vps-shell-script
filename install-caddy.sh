@@ -40,7 +40,7 @@ cat > /etc/caddy/Caddyfile <<EOF
 ${domain} {
   tls ${email}
   root /var/www/${domain}
-  proxy /ray localhost:10226 {
+  proxy /ray localhost:40226 {
     websocket
     transparent
   }
